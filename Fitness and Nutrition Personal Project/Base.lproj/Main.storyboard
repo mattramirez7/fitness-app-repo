@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--TitleViewController-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController title="TitleViewController" id="BYZ-38-t0r" customClass="TitleViewController" customModule="Fitness_and_Nutrition_Personal_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7x-ZP-xiE">
+                                <rect key="frame" x="84.5" y="437" width="245" height="32.5"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Personal App Project">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="29"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EV7-eG-KFI">
+                                <rect key="frame" x="319" y="831" width="83" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Continue"/>
+                                <connections>
+                                    <segue destination="Gby-bo-sHJ" kind="presentation" modalPresentationStyle="fullScreen" id="fLR-dd-nHi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="EV7-eG-KFI" secondAttribute="bottom" id="2tH-yE-Up9"/>
+                            <constraint firstItem="O7x-ZP-xiE" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="GFT-5S-rM2"/>
+                            <constraint firstItem="O7x-ZP-xiE" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="adz-uS-AGR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EV7-eG-KFI" secondAttribute="trailing" constant="12" id="o23-xd-yHP"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1416" y="323"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="3wx-4T-j0n">
+            <objects>
+                <viewController id="dwE-AB-XHj" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WEl-d7-mWA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="3hg-RY-Gfe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="9Oz-jw-lbt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eOh-db-rNl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1024" y="619"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="3LO-l0-xln">
+            <objects>
+                <viewController title="Profile" id="VcN-zb-pUc" customClass="ProfileViewController" customModule="Fitness_and_Nutrition_Personal_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PHh-RN-9TR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="jRl-PR-nLW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" id="x4G-ky-cMD">
+                        <imageReference key="image" image="person.circle" catalog="system" symbolScale="large" renderingMode="hierarchical">
+                            <hierarchicalColors>
+                                <color red="0.77983502198740373" green="0.25424839752193812" blue="0.19686316312532967" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color systemColor="labelColor"/>
+                                <color systemColor="tertiaryLabelColor"/>
+                            </hierarchicalColors>
+                        </imageReference>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0oW-9I-SI4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1024" y="11"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="h3B-I8-VNG">
+            <objects>
+                <tabBarController id="Gby-bo-sHJ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="rrB-Ji-E6K"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SF3-Jp-hmm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="VcN-zb-pUc" kind="relationship" relationship="viewControllers" id="fbN-fU-2N1"/>
+                        <segue destination="dwE-AB-XHj" kind="relationship" relationship="viewControllers" id="gmf-eU-kzm"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lpa-Jy-Fps" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-462" y="323"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
