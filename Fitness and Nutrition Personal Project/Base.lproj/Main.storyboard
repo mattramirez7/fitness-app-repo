@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -18,18 +18,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7x-ZP-xiE">
-                                <rect key="frame" x="84.5" y="437" width="245" height="32.5"/>
+                                <rect key="frame" x="86.5" y="437.5" width="241.5" height="35"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Personal App Project">
+                                    <fragment content="Fitness App Project">
                                         <attributes>
                                             <font key="NSFont" metaFont="system" size="29"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EV7-eG-KFI">
-                                <rect key="frame" x="319" y="831" width="83" height="31"/>
+                                <rect key="frame" x="309" y="827.5" width="93" height="34.5"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Continue"/>
                                 <connections>
@@ -49,23 +50,96 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1416" y="323"/>
+            <point key="canvasLocation" x="-1668" y="323"/>
         </scene>
-        <!--Item 2-->
+        <!--Food Plan-->
+        <scene sceneID="jwM-zw-BbX">
+            <objects>
+                <viewController id="n9k-fR-sbZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ESM-hv-IGI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="UhR-fg-e0n"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Food Plan" image="fork.knife.circle" catalog="system" id="YEl-pi-X4s"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9iM-wb-eMs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1694" y="1125"/>
+        </scene>
+        <!--Workout Plan-->
         <scene sceneID="3wx-4T-j0n">
             <objects>
-                <viewController id="dwE-AB-XHj" sceneMemberID="viewController">
+                <viewController id="dwE-AB-XHj" customClass="WorkoutScheduleViewController" customModule="Fitness_and_Nutrition_Personal_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WEl-d7-mWA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Schedule" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="el7-yE-e56">
+                                <rect key="frame" x="120" y="93" width="174.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZVc-Pw-zNC">
+                                <rect key="frame" x="82" y="280.5" width="250" height="300"/>
+                                <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="Mp6-0r-AQI"/>
+                                    <constraint firstAttribute="height" constant="300" id="dpv-cE-NWk"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="3hg-RY-Gfe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="el7-yE-e56" firstAttribute="top" secondItem="3hg-RY-Gfe" secondAttribute="top" constant="45" id="5lf-Wy-Evh"/>
+                            <constraint firstItem="ZVc-Pw-zNC" firstAttribute="centerY" secondItem="3hg-RY-Gfe" secondAttribute="centerY" id="d1e-8c-AbF"/>
+                            <constraint firstItem="ZVc-Pw-zNC" firstAttribute="centerX" secondItem="3hg-RY-Gfe" secondAttribute="centerX" id="yYH-wt-6UV"/>
+                            <constraint firstItem="el7-yE-e56" firstAttribute="centerX" secondItem="3hg-RY-Gfe" secondAttribute="centerX" id="zwN-35-kqu"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="9Oz-jw-lbt"/>
+                    <tabBarItem key="tabBarItem" title="Workout Plan" image="dumbbell" catalog="system" id="9Oz-jw-lbt"/>
+                    <connections>
+                        <outlet property="calendarUIView" destination="ZVc-Pw-zNC" id="hKz-52-QvR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eOh-db-rNl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1024" y="619"/>
+            <point key="canvasLocation" x="-2536" y="1125"/>
+        </scene>
+        <!--Record-->
+        <scene sceneID="91O-ej-jEK">
+            <objects>
+                <viewController id="fLc-1p-KhN" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jsA-6v-cVb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Jab-ar-NsT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Record" image="record.circle" catalog="system" id="diU-cc-7l0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N30-vN-kn6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-852" y="1125"/>
+        </scene>
+        <!--Friends-->
+        <scene sceneID="7eg-pN-7Hb">
+            <objects>
+                <viewController id="7Wy-BX-oki" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CyH-bj-hrJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="A2p-a0-5Ow"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Friends" image="person.3" catalog="system" id="MHd-lA-uU7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ykU-x6-b6d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-99" y="1125"/>
         </scene>
         <!--Profile-->
         <scene sceneID="3LO-l0-xln">
@@ -74,8 +148,52 @@
                     <view key="view" contentMode="scaleToFill" id="PHh-RN-9TR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c1H-TG-z1x">
+                                <rect key="frame" x="119.5" y="93" width="175" height="175"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="175" id="Vfp-gH-lEU"/>
+                                    <constraint firstAttribute="width" constant="175" id="fuc-wY-FoX"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWu-X5-k54">
+                                <rect key="frame" x="168" y="293" width="78.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="plus.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="21x-Bm-dQ6">
+                                <rect key="frame" x="245" y="228.5" width="35" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="6cA-PN-zW3"/>
+                                    <constraint firstAttribute="width" constant="35" id="SQ3-7D-LJp"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJ7-32-d54">
+                                <rect key="frame" x="245" y="228" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="8IB-w5-ef2"/>
+                                    <constraint firstAttribute="width" constant="35" id="cGv-IN-MAr"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="addProfilePicBtnClicked:" destination="VcN-zb-pUc" eventType="touchUpInside" id="ohA-iA-y9n"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="jRl-PR-nLW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="c1H-TG-z1x" firstAttribute="centerX" secondItem="jRl-PR-nLW" secondAttribute="centerX" id="5Ea-Xo-LGt"/>
+                            <constraint firstItem="KJ7-32-d54" firstAttribute="top" secondItem="jRl-PR-nLW" secondAttribute="top" constant="180" id="Lst-Bb-aOt"/>
+                            <constraint firstItem="c1H-TG-z1x" firstAttribute="top" secondItem="jRl-PR-nLW" secondAttribute="top" constant="45" id="MeD-rT-kwO"/>
+                            <constraint firstItem="KJ7-32-d54" firstAttribute="leading" secondItem="jRl-PR-nLW" secondAttribute="leading" constant="245" id="Mr2-0g-kPg"/>
+                            <constraint firstItem="21x-Bm-dQ6" firstAttribute="leading" secondItem="jRl-PR-nLW" secondAttribute="leading" constant="245" id="RLg-mw-nqn"/>
+                            <constraint firstItem="21x-Bm-dQ6" firstAttribute="top" secondItem="jRl-PR-nLW" secondAttribute="top" constant="180" id="TPp-k1-Yi3"/>
+                            <constraint firstItem="vWu-X5-k54" firstAttribute="top" secondItem="c1H-TG-z1x" secondAttribute="bottom" constant="25" id="a5y-Cy-oEn"/>
+                            <constraint firstItem="vWu-X5-k54" firstAttribute="centerX" secondItem="jRl-PR-nLW" secondAttribute="centerX" id="cRg-4v-iEm"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" id="x4G-ky-cMD">
                         <imageReference key="image" image="person.circle" catalog="system" symbolScale="large" renderingMode="hierarchical">
@@ -86,10 +204,14 @@
                             </hierarchicalColors>
                         </imageReference>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="Username" destination="vWu-X5-k54" id="h0U-rZ-gt9"/>
+                        <outlet property="profilePicture" destination="c1H-TG-z1x" id="Eq8-eA-XtP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0oW-9I-SI4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1024" y="11"/>
+            <point key="canvasLocation" x="666.66666666666674" y="1125"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="h3B-I8-VNG">
@@ -102,25 +224,36 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="VcN-zb-pUc" kind="relationship" relationship="viewControllers" id="fbN-fU-2N1"/>
                         <segue destination="dwE-AB-XHj" kind="relationship" relationship="viewControllers" id="gmf-eU-kzm"/>
+                        <segue destination="n9k-fR-sbZ" kind="relationship" relationship="viewControllers" id="1xm-Pc-Ozw"/>
+                        <segue destination="fLc-1p-KhN" kind="relationship" relationship="viewControllers" id="fbh-l0-LFJ"/>
+                        <segue destination="7Wy-BX-oki" kind="relationship" relationship="viewControllers" id="QPI-QC-koR"/>
+                        <segue destination="VcN-zb-pUc" kind="relationship" relationship="viewControllers" id="fbN-fU-2N1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lpa-Jy-Fps" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-462" y="323"/>
+            <point key="canvasLocation" x="-851" y="323"/>
         </scene>
     </scenes>
     <resources>
-        <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="dumbbell" catalog="system" width="128" height="72"/>
+        <image name="fork.knife.circle" catalog="system" width="128" height="123"/>
+        <image name="person.3" catalog="system" width="128" height="62"/>
+        <image name="person.circle" catalog="system" width="128" height="123"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="record.circle" catalog="system" width="128" height="123"/>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
