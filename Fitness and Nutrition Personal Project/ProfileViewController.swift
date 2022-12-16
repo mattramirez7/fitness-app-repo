@@ -6,48 +6,50 @@
 //
 
 import UIKit
+import GoogleSignIn
 
-class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class ProfileViewController: UIViewController {
+    
 
-    @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var emailAddress: UILabel!
     @IBOutlet weak var profilePicture: UIImageView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        profilePicture.image = UIImage(named: "Matt")
-        profilePicture.makeRounded()
-        username.text = "Matt"
-    }
-    
-    @IBAction func addProfilePicBtnClicked(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-                imagePicker.delegate = self
-                imagePicker.sourceType = .photoLibrary
-                present(imagePicker, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                profilePicture.image = selectedImage
-            }
-            dismiss(animated: true, completion: nil)
-        }
         
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            dismiss(animated: true, completion: nil)
-        }
-
+        print("\(GIDSignIn.sharedInstance.currentUser?.profile?.name)")
+        
+        userName.text = GIDSignIn.sharedInstance.currentUser?.profile?.name
+        emailAddress.text = GIDSignIn.sharedInstance.currentUser?.profile?.email
+        profilePicture.load(url: (GIDSignIn.sharedInstance.currentUser?.profile?.imageURL(withDimension: 320))!)
+        profilePicture.makeRounded()
     }
     
-
-
-
-
-
+    @IBAction func signOut(_ sender: Any) {
+        GIDSignIn.sharedInstance.signOut()
+        
+        self.dismiss(animated: true)
+        
+    }
+    
+}
 
 
 extension UIImageView {
+    
+    func load(url: URL) {
+            DispatchQueue.global().async { [weak self] in
+                if let data = try? Data(contentsOf: url) {
+                    if let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            self?.image = image
+                        }
+                    }
+                }
+            }
+        }
     
     func makeRounded() {
         
