@@ -19,21 +19,26 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("\(GIDSignIn.sharedInstance.currentUser?.profile?.name)")
-        
-        userName.text = GIDSignIn.sharedInstance.currentUser?.profile?.name
-        emailAddress.text = GIDSignIn.sharedInstance.currentUser?.profile?.email
-        profilePicture.load(url: (GIDSignIn.sharedInstance.currentUser?.profile?.imageURL(withDimension: 320))!)
-        profilePicture.makeRounded()
+        loadProfileInfo()
     }
     
     @IBAction func signOut(_ sender: Any) {
         GIDSignIn.sharedInstance.signOut()
+
+        if let titleViewController = self.presentingViewController as? TitleViewController {
+            titleViewController.isSignedIn()
+        }
         
         self.dismiss(animated: true)
         
     }
     
+    func loadProfileInfo() {
+        userName.text = GIDSignIn.sharedInstance.currentUser?.profile?.name
+        emailAddress.text = GIDSignIn.sharedInstance.currentUser?.profile?.email
+        profilePicture.load(url: (GIDSignIn.sharedInstance.currentUser?.profile?.imageURL(withDimension: 320))!)
+        profilePicture.makeRounded()
+    }
 }
 
 

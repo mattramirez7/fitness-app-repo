@@ -15,6 +15,7 @@
 		4870B3B428EE9C3400B5546C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4870B3B228EE9C3400B5546C /* LaunchScreen.storyboard */; };
 		4870B3BC28EEA0CF00B5546C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4870B3BB28EEA0CF00B5546C /* ProfileViewController.swift */; };
 		48BB91D42946F25B002CBCCA /* WorkoutScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BB91D32946F25B002CBCCA /* WorkoutScheduleViewController.swift */; };
+		48C115A9294CF2E7002AE85B /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C115A8294CF2E7002AE85B /* RecordViewController.swift */; };
 		48CB85CD294AB715003205F3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 48CB85CC294AB715003205F3 /* FirebaseAuth */; };
 		48CB85CF294C06D4003205F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48CB85CE294C06D4003205F3 /* GoogleService-Info.plist */; };
 		48CB85D2294C17B2003205F3 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 48CB85D1294C17B2003205F3 /* GoogleSignIn */; };
@@ -31,6 +32,7 @@
 		4870B3B528EE9C3400B5546C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4870B3BB28EEA0CF00B5546C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		48BB91D32946F25B002CBCCA /* WorkoutScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutScheduleViewController.swift; sourceTree = "<group>"; };
+		48C115A8294CF2E7002AE85B /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		48CB85CE294C06D4003205F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +73,7 @@
 				4870B3AB28EE9C3300B5546C /* TitleViewController.swift */,
 				4870B3BB28EEA0CF00B5546C /* ProfileViewController.swift */,
 				4870B3AD28EE9C3300B5546C /* Main.storyboard */,
+				48C115A8294CF2E7002AE85B /* RecordViewController.swift */,
 				48BB91D32946F25B002CBCCA /* WorkoutScheduleViewController.swift */,
 				4870B3B028EE9C3400B5546C /* Assets.xcassets */,
 				4870B3B228EE9C3400B5546C /* LaunchScreen.storyboard */,
@@ -163,6 +166,7 @@
 				4870B3AC28EE9C3300B5546C /* TitleViewController.swift in Sources */,
 				48BB91D42946F25B002CBCCA /* WorkoutScheduleViewController.swift in Sources */,
 				4870B3A828EE9C3300B5546C /* AppDelegate.swift in Sources */,
+				48C115A9294CF2E7002AE85B /* RecordViewController.swift in Sources */,
 				4870B3BC28EEA0CF00B5546C /* ProfileViewController.swift in Sources */,
 				4870B3AA28EE9C3300B5546C /* SceneDelegate.swift in Sources */,
 			);
