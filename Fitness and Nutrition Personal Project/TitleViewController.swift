@@ -31,6 +31,7 @@ class TitleViewController: UIViewController {
         if (GIDSignIn.sharedInstance.currentUser == nil) {
             googleSignInView.isHidden = false
             welcomeLabel.isHidden = true
+            welcomeMessage.isHidden = true
 
         } else {
             googleSignInView.isHidden = true
@@ -38,18 +39,21 @@ class TitleViewController: UIViewController {
             let user = GIDSignIn.sharedInstance.currentUser!.profile?.givenName ?? "default name"
             
             welcomeLabel.text = "Welcome, \(user)"
-            
             welcomeLabel.textColor = UIColor(red: 0.498, green: 0.051, blue: 0.008, alpha: 1.0)
-
+            welcomeMessage.layer.borderWidth = 5
+            welcomeMessage.layer.borderColor = UIColor.black.cgColor
+            welcomeMessage.alpha = 0
+            welcomeMessage.layer.cornerRadius = 10
             welcomeLabel.alpha = 0
-
             welcomeLabel.isHidden = false
+            welcomeMessage.isHidden = false
             
             UIView.animate(withDuration: 1.5) {
                 self.welcomeLabel.alpha = 1
+                self.welcomeMessage.alpha = 1
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.performSegue(withIdentifier: "userSignedIn", sender: self)
             }
             

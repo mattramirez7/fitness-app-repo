@@ -26,11 +26,10 @@ class RecordViewController: UIViewController {
         formatter.dateFormat = "MMM dd"
         let date = Date()
         currentDate.text = formatter.string(from: date).uppercased()
-        currentDate.textColor = UIColor(red: 0.498, green: 0.051, blue: 0.008, alpha: 1.0)
         
         dateView.backgroundColor = .white
         dateView.layer.cornerRadius = 10
-        dateView.layer.borderWidth = 5
+        dateView.layer.borderWidth = 10
         dateView.layer.borderColor = UIColor.black.cgColor
     }
 
