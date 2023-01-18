@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4802727D2977C8E60018B44D /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4802727C2977C8E60018B44D /* DBManager.swift */; };
+		4802727F2977C90F0018B44D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4802727E2977C90F0018B44D /* UserModel.swift */; };
 		4804ABD8294F835900492B2F /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4804ABD7294F835900492B2F /* ExerciseTableViewCell.swift */; };
 		484D3769295D4C4D000B9E93 /* WeekCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D3768295D4C4D000B9E93 /* WeekCollectionViewCell.swift */; };
 		4870B3A828EE9C3300B5546C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4870B3A728EE9C3300B5546C /* AppDelegate.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4802727C2977C8E60018B44D /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		4802727E2977C90F0018B44D /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		4804ABD7294F835900492B2F /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
 		484D3768295D4C4D000B9E93 /* WeekCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCollectionViewCell.swift; sourceTree = "<group>"; };
 		4870B3A428EE9C3300B5546C /* Fitness and Nutrition Personal Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fitness and Nutrition Personal Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,7 +60,6 @@
 		4870B39B28EE9C3300B5546C = {
 			isa = PBXGroup;
 			children = (
-				484D3768295D4C4D000B9E93 /* WeekCollectionViewCell.swift */,
 				4870B3A628EE9C3300B5546C /* Fitness and Nutrition Personal Project */,
 				4870B3A528EE9C3300B5546C /* Products */,
 			);
@@ -73,16 +76,19 @@
 		4870B3A628EE9C3300B5546C /* Fitness and Nutrition Personal Project */ = {
 			isa = PBXGroup;
 			children = (
+				4870B3B228EE9C3400B5546C /* LaunchScreen.storyboard */,
+				4870B3AD28EE9C3300B5546C /* Main.storyboard */,
 				4870B3A728EE9C3300B5546C /* AppDelegate.swift */,
 				4870B3A928EE9C3300B5546C /* SceneDelegate.swift */,
+				4802727C2977C8E60018B44D /* DBManager.swift */,
+				4802727E2977C90F0018B44D /* UserModel.swift */,
 				4870B3AB28EE9C3300B5546C /* TitleViewController.swift */,
-				4870B3BB28EEA0CF00B5546C /* ProfileViewController.swift */,
-				4870B3AD28EE9C3300B5546C /* Main.storyboard */,
+				48BB91D32946F25B002CBCCA /* WorkoutScheduleViewController.swift */,
+				484D3768295D4C4D000B9E93 /* WeekCollectionViewCell.swift */,
 				4804ABD7294F835900492B2F /* ExerciseTableViewCell.swift */,
 				48C115A8294CF2E7002AE85B /* RecordViewController.swift */,
-				48BB91D32946F25B002CBCCA /* WorkoutScheduleViewController.swift */,
+				4870B3BB28EEA0CF00B5546C /* ProfileViewController.swift */,
 				4870B3B028EE9C3400B5546C /* Assets.xcassets */,
-				4870B3B228EE9C3400B5546C /* LaunchScreen.storyboard */,
 				4870B3B528EE9C3400B5546C /* Info.plist */,
 				48CB85CE294C06D4003205F3 /* GoogleService-Info.plist */,
 			);
@@ -173,9 +179,11 @@
 				48BB91D42946F25B002CBCCA /* WorkoutScheduleViewController.swift in Sources */,
 				484D3769295D4C4D000B9E93 /* WeekCollectionViewCell.swift in Sources */,
 				4870B3A828EE9C3300B5546C /* AppDelegate.swift in Sources */,
+				4802727D2977C8E60018B44D /* DBManager.swift in Sources */,
 				4804ABD8294F835900492B2F /* ExerciseTableViewCell.swift in Sources */,
 				48C115A9294CF2E7002AE85B /* RecordViewController.swift in Sources */,
 				4870B3BC28EEA0CF00B5546C /* ProfileViewController.swift in Sources */,
+				4802727F2977C90F0018B44D /* UserModel.swift in Sources */,
 				4870B3AA28EE9C3300B5546C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

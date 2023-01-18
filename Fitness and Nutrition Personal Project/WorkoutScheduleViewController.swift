@@ -8,7 +8,7 @@
 import UIKit
 
 
-class WorkoutScheduleViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class WorkoutScheduleViewController: UIViewController {
 
     @IBOutlet weak var exerciseTableView: UITableView!
     @IBOutlet weak var monthLabel: UILabel!
@@ -30,7 +30,7 @@ class WorkoutScheduleViewController: UIViewController, UICollectionViewDelegate,
         exerciseTableView.delegate = self
         exerciseTableView.dataSource = self
         
-        getDateInfo()
+        setWeek()
         makeRequest()
         
     }
@@ -38,13 +38,13 @@ class WorkoutScheduleViewController: UIViewController, UICollectionViewDelegate,
     @IBAction func nextWeek(_ sender: Any) {
         let calendar = Calendar.current
         currentDate = calendar.date(byAdding: .day, value: 7, to: currentDate)!
-        getDateInfo()
+        setWeek()
     }
     
     @IBAction func previousWeek(_ sender: Any) {
         let calendar = Calendar.current
         currentDate = calendar.date(byAdding: .day, value: -7, to: currentDate)!
-        getDateInfo()
+        setWeek()
     }
     
     @IBAction func search(_ sender: Any) {
@@ -53,12 +53,11 @@ class WorkoutScheduleViewController: UIViewController, UICollectionViewDelegate,
     
     func makeRequest() {
         searchInput.resignFirstResponder()
+        let url = URL(string: "https://api.api-ninjas.com/v1/exercises?muscle="+searchInput.text!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!
         
-        let muscle = "biceps".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        print(muscle)
-        let url = URL(string: "https://api.api-ninjas.com/v1/exercises?muscle="+searchInput.text!)!
         var request = URLRequest(url: url)
         request.setValue("8PSR0mwN7BhdBKZJdezM6Q==C6uyDAC4yCdia9a4", forHTTPHeaderField: "X-Api-Key")
+        
         let task = URLSession.shared.dataTask(with: request) {(data, response, error) in
             guard let data = data else { return }
 
@@ -66,16 +65,12 @@ class WorkoutScheduleViewController: UIViewController, UICollectionViewDelegate,
 
                 let data = try JSONSerialization.jsonObject(with: data) as! NSArray
 
-                print(data)
-
                 DispatchQueue.main.async {
-
-                    self.exerciseNames = data.value(forKey: "name") as! NSArray
-                    self.exerciseTypes = data.value(forKey: "type") as! NSArray
-                    self.equipment = data.value(forKey: "equipment") as! NSArray
-                    self.muscleGroups = data.value(forKey: "muscle") as! NSArray
-                    self.instructions = data.value(forKey: "instructions") as! NSArray
-
+                    self.exerciseNames = (data.value(forKey: "name") as! NSArray)
+                    self.exerciseTypes = (data.value(forKey: "type") as! NSArray)
+                    self.equipment = (data.value(forKey: "equipment") as! NSArray)
+                    self.muscleGroups = (data.value(forKey: "muscle") as! NSArray)
+                    self.instructions = (data.value(forKey: "instructions") as! NSArray)
                     self.exerciseTableView.reloadData()
                 }
 
@@ -87,11 +82,9 @@ class WorkoutScheduleViewController: UIViewController, UICollectionViewDelegate,
     }
     
     
-    func getDateInfo() {
+    func setWeek() {
         let calendar = Calendar.current
-        let year = calendar.component(.year, from: currentDate)
 
-        
         let beginWeekDate = calendar.date(byAdding: .day, value: -3, to: currentDate)!
 
         let endWeekDate = calendar.date(byAdding: .day, value: 3, to: currentDate)!
@@ -103,6 +96,34 @@ class WorkoutScheduleViewController: UIViewController, UICollectionViewDelegate,
 
     }
 
+}
+
+
+extension WorkoutScheduleViewController : UITableViewDelegate, UITableViewDataSource ,  UICollectionViewDelegate, UICollectionViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return exerciseNames?.count ?? 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = exerciseTableView.dequeueReusableCell(withIdentifier: "exerciseCell", for: indexPath) as! ExerciseTableViewCell
+        
+        let exerciseName = self.exerciseNames![indexPath.row]
+        let exerciseType = self.exerciseTypes![indexPath.row]
+        let muscleGroup = self.muscleGroups![indexPath.row]
+        // let equipment = self.equipment![indexPath.row]
+        // let instruction = self.instructions![indexPath.row]
+        
+        cell.exercisename.text = (exerciseName as! String)
+        cell.exerciseType.text = (exerciseType as! String)
+        cell.muscleGroup.text = (muscleGroup as! String)
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 7
     }
@@ -114,6 +135,7 @@ class WorkoutScheduleViewController: UIViewController, UICollectionViewDelegate,
         
         let formatter = DateFormatter()
         
+        // Highlight selected day of the week. Default current date
         formatter.dateFormat = "MMM dd"
         if(formatter.string(from: todaysDate) == formatter.string(from: selectedDate)) {
             cell.backgroundColor = UIColor(red: 0.498, green: 0.051, blue: 0.008, alpha: 1.0)
@@ -130,37 +152,10 @@ class WorkoutScheduleViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        selectedDate = Calendar.current.date(byAdding: .day, value: indexPath.row - 3, to: Date())!
+        //Client selected a day of the week to be viewed
+        selectedDate = Calendar.current.date(byAdding: .day, value: indexPath.row - Calendar.current.component(.weekday, from: Date()) + 1, to: Date())!
         
         weekCollectionView.reloadData()
-    }
-}
-
-
-extension WorkoutScheduleViewController : UITableViewDelegate, UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return exerciseNames?.count ?? 0
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = exerciseTableView.dequeueReusableCell(withIdentifier: "exerciseCell", for: indexPath) as! ExerciseTableViewCell
-        
-        let exerciseName = self.exerciseNames![indexPath.row]
-        let exerciseType = self.exerciseTypes![indexPath.row]
-        let muscleGroup = self.muscleGroups![indexPath.row]
-        let equipment = self.equipment![indexPath.row]
-        let instruction = self.instructions![indexPath.row]
-        
-        cell.exercisename.text = exerciseName as! String
-        cell.exerciseType.text = exerciseType as! String
-        cell.muscleGroup.text = muscleGroup as! String
-        print(cell)
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
     }
 
 }

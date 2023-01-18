@@ -15,11 +15,20 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var emailAddress: UILabel!
     @IBOutlet weak var profilePicture: UIImageView!
     
+    var db = DBManager()
+    var users = Array<User>()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadProfileInfo()
+        
+        //db.insert(id: 1, name: userName.text!, age: 21, email: emailAddress.text!)
+        
+        users = db.read()
+        print(users)
+        print(db.dbPath)
     }
     
     @IBAction func signOut(_ sender: Any) {
