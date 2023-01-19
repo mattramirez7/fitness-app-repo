@@ -12,15 +12,18 @@ class User
       
     var name: String = ""
     var email: String = ""
-    var age: Int = 0
-    var weight: Double = 0.0
-    var split: Dictionary = ["Mon": "", "Tue": "", "Wed": "", "Thu": "", "Fri": "", "Sat": "", "Sun": "", ]
+    var age: Int?
+    var weight: Double?
+    var split: String? 
     var id: Int = 0
       
-    init(id:Int, name:String, age:Int, email:String) {
+    init(id:Int, name:String, age:Int?, email:String, weight:Double?, split: String? ) {
         self.id = id
         self.name = name
-        self.age = age
         self.email = email
+        self.age = age
+        self.weight = weight
+        self.split = split
+        
     }
 }

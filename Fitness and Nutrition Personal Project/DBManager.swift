@@ -17,7 +17,7 @@ class DBManager
     }
   
   
-    let dbPath: String = "myDb.sqlite"
+    let dbPath: String = "usersDB.sqlite"
     var db:OpaquePointer?
   
   
@@ -44,7 +44,7 @@ class DBManager
     }
       
     func createTable() {
-        let createTableString = "CREATE TABLE IF NOT EXISTS user(Id INTEGER PRIMARY KEY,name TEXT,age INTEGER, email TEXT);"
+        let createTableString = "CREATE TABLE IF NOT EXISTS user(Id INTEGER PRIMARY KEY, name TEXT, email TEXT, age INTEGER, weight DOUBLE, split TEXT);"
         var createTableStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK
         {
@@ -61,20 +61,19 @@ class DBManager
     }
       
       
-    func insert(id:Int, name:String, age:Int, email:String) {
+    func insert(id:Int, name:String, email:String) {
         let users = read()
         for user in users {
             if user.id == id {
                 return
             }
         }
-        let insertStatementString = "INSERT INTO user (Id, name, age, email) VALUES (?, ?, ?, ?);"
+        let insertStatementString = "INSERT INTO user (Id, name, email) VALUES (?, ?, ?);"
         var insertStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
             sqlite3_bind_int(insertStatement, 1, Int32(id))
             sqlite3_bind_text(insertStatement, 2, (name as NSString).utf8String, -1, nil)
-            sqlite3_bind_int(insertStatement, 3, Int32(age))
-            sqlite3_bind_text(insertStatement, 4, (email as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 3, (email as NSString).utf8String, -1, nil)
               
             if sqlite3_step(insertStatement) == SQLITE_DONE {
                 print("Successfully inserted row.")
@@ -87,25 +86,76 @@ class DBManager
         sqlite3_finalize(insertStatement)
     }
       
-    func read() -> [User] {
-        let queryStatementString = "SELECT * FROM user;"
+    func read(id: Int? = nil) -> [User] {
+        var queryStatementString = "SELECT * FROM user"
+        if id != nil {
+            queryStatementString += " WHERE id = \(id!)"
+        }
         var queryStatement: OpaquePointer? = nil
         var users : [User] = []
         if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
             while sqlite3_step(queryStatement) == SQLITE_ROW {
                 let id = sqlite3_column_int(queryStatement, 0)
                 let name = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
-                let year = sqlite3_column_int(queryStatement, 2)
-                let email = String(describing: String(cString: sqlite3_column_text(queryStatement, 3)))
-                users.append(User(id: Int(id), name: name, age: Int(year), email: email))
+                let email = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
+                let age = sqlite3_column_int(queryStatement, 3)
+                print(age)
+                let weight = sqlite3_column_double(queryStatement, 4)
+                print(weight)
+
+                let split =  sqlite3_column_text(queryStatement, 5)
+                var splitValue = ""
+                
+                users.append(User(id: Int(id), name: name, age: Int(age), email: email, weight: weight, split: splitValue))
+                
                 print("Query Result:")
-                print("\(id) | \(name) | \(year) | \(email)")
+                print("\(id) | \(name) | \(age) | \(email)")
             }
         } else {
             print("SELECT statement could not be prepared")
         }
         sqlite3_finalize(queryStatement)
         return users
+    }
+    
+    func update(id: Int, age: Int? = nil, weight: Double? = nil, split: [String: String]? = nil) {
+        let updateStatementString = "UPDATE user SET age = ?, weight = ?, split = ? WHERE id = ?;"
+        var updateStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
+            if let age = age {
+                sqlite3_bind_int(updateStatement, 1, Int32(age))
+            } else {
+                sqlite3_bind_null(updateStatement, 1)
+            }
+            if let weight = weight {
+                sqlite3_bind_double(updateStatement, 2, Double(Int32(weight)))
+            } else {
+                sqlite3_bind_null(updateStatement, 2)
+            }
+            if let split = split {
+                do {
+                    let jsonData = try JSONSerialization.data(withJSONObject: split, options: .prettyPrinted)
+                    let jsonString = String(data: jsonData, encoding: .utf8)
+                    sqlite3_bind_text(updateStatement, 3, (jsonString! as NSString).utf8String, -1, nil)
+                } catch {
+                    print("Error: \(error)")
+                    sqlite3_bind_null(updateStatement, 3)
+                }
+            } else {
+                sqlite3_bind_null(updateStatement, 3)
+            }
+            
+            sqlite3_bind_int(updateStatement, 4, Int32(id))
+
+            if sqlite3_step(updateStatement) == SQLITE_DONE {
+                print("Successfully updated row.")
+            } else {
+                print("Could not update row.")
+            }
+        } else {
+            print("UPDATE statement could not be prepared.")
+        }
+        sqlite3_finalize(updateStatement)
     }
       
     func deleteByID(id:Int) {

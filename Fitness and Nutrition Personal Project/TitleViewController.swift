@@ -19,9 +19,9 @@ class TitleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if (GIDSignIn.sharedInstance.currentUser != nil) {
-            GIDSignIn.sharedInstance.signOut()
-        }
+//        if (GIDSignIn.sharedInstance.currentUser != nil) {
+//            GIDSignIn.sharedInstance.signOut()
+//        }
         
         isSignedIn()
     }
