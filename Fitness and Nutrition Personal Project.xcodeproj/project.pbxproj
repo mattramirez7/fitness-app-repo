@@ -11,6 +11,7 @@
 		4802727F2977C90F0018B44D /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4802727E2977C90F0018B44D /* UserModel.swift */; };
 		4804ABD8294F835900492B2F /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4804ABD7294F835900492B2F /* ExerciseTableViewCell.swift */; };
 		484D3769295D4C4D000B9E93 /* WeekCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484D3768295D4C4D000B9E93 /* WeekCollectionViewCell.swift */; };
+		485D31F42993281600C11C94 /* SplitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485D31F32993281600C11C94 /* SplitCollectionViewCell.swift */; };
 		4870B3A828EE9C3300B5546C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4870B3A728EE9C3300B5546C /* AppDelegate.swift */; };
 		4870B3AA28EE9C3300B5546C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4870B3A928EE9C3300B5546C /* SceneDelegate.swift */; };
 		4870B3AC28EE9C3300B5546C /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4870B3AB28EE9C3300B5546C /* TitleViewController.swift */; };
@@ -23,6 +24,7 @@
 		48CB85CD294AB715003205F3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 48CB85CC294AB715003205F3 /* FirebaseAuth */; };
 		48CB85CF294C06D4003205F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48CB85CE294C06D4003205F3 /* GoogleService-Info.plist */; };
 		48CB85D2294C17B2003205F3 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 48CB85D1294C17B2003205F3 /* GoogleSignIn */; };
+		48D2658C29922BA200E1C463 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 48D2658B29922BA200E1C463 /* Fonts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,7 @@
 		4802727E2977C90F0018B44D /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		4804ABD7294F835900492B2F /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
 		484D3768295D4C4D000B9E93 /* WeekCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCollectionViewCell.swift; sourceTree = "<group>"; };
+		485D31F32993281600C11C94 /* SplitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitCollectionViewCell.swift; sourceTree = "<group>"; };
 		4870B3A428EE9C3300B5546C /* Fitness and Nutrition Personal Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fitness and Nutrition Personal Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4870B3A728EE9C3300B5546C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4870B3A928EE9C3300B5546C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +45,7 @@
 		48BB91D32946F25B002CBCCA /* WorkoutScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutScheduleViewController.swift; sourceTree = "<group>"; };
 		48C115A8294CF2E7002AE85B /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		48CB85CE294C06D4003205F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		48D2658B29922BA200E1C463 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +90,10 @@
 				48BB91D32946F25B002CBCCA /* WorkoutScheduleViewController.swift */,
 				484D3768295D4C4D000B9E93 /* WeekCollectionViewCell.swift */,
 				4804ABD7294F835900492B2F /* ExerciseTableViewCell.swift */,
+				485D31F32993281600C11C94 /* SplitCollectionViewCell.swift */,
 				48C115A8294CF2E7002AE85B /* RecordViewController.swift */,
 				4870B3BB28EEA0CF00B5546C /* ProfileViewController.swift */,
+				48D2658B29922BA200E1C463 /* Fonts */,
 				4870B3B028EE9C3400B5546C /* Assets.xcassets */,
 				4870B3B528EE9C3400B5546C /* Info.plist */,
 				48CB85CE294C06D4003205F3 /* GoogleService-Info.plist */,
@@ -161,6 +167,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48D2658C29922BA200E1C463 /* Fonts in Resources */,
 				4870B3B428EE9C3400B5546C /* LaunchScreen.storyboard in Resources */,
 				48CB85CF294C06D4003205F3 /* GoogleService-Info.plist in Resources */,
 				4870B3B128EE9C3400B5546C /* Assets.xcassets in Resources */,
@@ -176,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4870B3AC28EE9C3300B5546C /* TitleViewController.swift in Sources */,
+				485D31F42993281600C11C94 /* SplitCollectionViewCell.swift in Sources */,
 				48BB91D42946F25B002CBCCA /* WorkoutScheduleViewController.swift in Sources */,
 				484D3769295D4C4D000B9E93 /* WeekCollectionViewCell.swift in Sources */,
 				4870B3A828EE9C3300B5546C /* AppDelegate.swift in Sources */,

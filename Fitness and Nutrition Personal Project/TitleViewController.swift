@@ -12,9 +12,10 @@ import GoogleSignIn
 class TitleViewController: UIViewController {
     
     @IBOutlet weak var googleSignInView: GIDSignInButton!
-    
     @IBOutlet weak var welcomeMessage: UIView!
     @IBOutlet weak var welcomeLabel: UILabel!
+    
+    var db = DBManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,13 +41,15 @@ class TitleViewController: UIViewController {
             
             welcomeLabel.text = "Welcome, \(user)"
             welcomeLabel.textColor = UIColor(red: 0.498, green: 0.051, blue: 0.008, alpha: 1.0)
-            welcomeMessage.layer.borderWidth = 5
-            welcomeMessage.layer.borderColor = UIColor.black.cgColor
+            
             welcomeMessage.alpha = 0
             welcomeMessage.layer.cornerRadius = 10
             welcomeLabel.alpha = 0
             welcomeLabel.isHidden = false
             welcomeMessage.isHidden = false
+            
+            
+            db.insert(name: GIDSignIn.sharedInstance.currentUser?.profile?.name ?? "defaultName", email: GIDSignIn.sharedInstance.currentUser?.profile?.email ?? "defaultEmail")
             
             UIView.animate(withDuration: 1.5) {
                 self.welcomeLabel.alpha = 1
@@ -68,19 +71,11 @@ class TitleViewController: UIViewController {
         GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
             guard error == nil else { return }
             
-            guard let signInResult = signInResult else { return }
-            
-            let user = signInResult.user
-            let emailAddress = user.profile?.email
-            let fullName = user.profile?.name
-            let givenName = user.profile?.givenName
-            let familyName = user.profile?.familyName
-            let profilePicUrl = user.profile?.imageURL(withDimension: 320)
+            guard signInResult != nil else { return }
             
             // If sign in succeeded, display the app's main content View.
             self.isSignedIn()
                 
-            
           }
     }
 

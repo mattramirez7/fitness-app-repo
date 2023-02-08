@@ -13,6 +13,7 @@ class WorkoutScheduleViewController: UIViewController {
     @IBOutlet weak var exerciseTableView: UITableView!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var weekCollectionView: UICollectionView!
+    @IBOutlet weak var currentDataViewed: UILabel!
     
     @IBOutlet weak var searchInput: UITextField!
     
@@ -30,6 +31,20 @@ class WorkoutScheduleViewController: UIViewController {
         exerciseTableView.delegate = self
         exerciseTableView.dataSource = self
         
+        exerciseTableView.layer.cornerRadius = 10
+        exerciseTableView.layer.borderWidth = 2
+        exerciseTableView.layer.borderColor = UIColor.systemGray2.cgColor
+        
+        weekCollectionView.layer.cornerRadius = 2
+        weekCollectionView.layer.borderWidth = 3
+        weekCollectionView.layer.borderColor = UIColor(red: 0.498, green: 0.051, blue: 0.008, alpha: 1.0).cgColor
+        
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd"
+        currentDataViewed.text = formatter.string(from: selectedDate).uppercased()
+
+        
         setWeek()
         makeRequest()
         
@@ -38,12 +53,24 @@ class WorkoutScheduleViewController: UIViewController {
     @IBAction func nextWeek(_ sender: Any) {
         let calendar = Calendar.current
         currentDate = calendar.date(byAdding: .day, value: 7, to: currentDate)!
+        selectedDate = calendar.date(byAdding: .day, value: 7, to: selectedDate)!
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd"
+        currentDataViewed.text = formatter.string(from: selectedDate).uppercased()
+        
         setWeek()
     }
     
     @IBAction func previousWeek(_ sender: Any) {
         let calendar = Calendar.current
         currentDate = calendar.date(byAdding: .day, value: -7, to: currentDate)!
+        selectedDate = calendar.date(byAdding: .day, value: -7, to: selectedDate)!
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd"
+        currentDataViewed.text = formatter.string(from: selectedDate).uppercased()
+        
         setWeek()
     }
     
@@ -91,8 +118,9 @@ class WorkoutScheduleViewController: UIViewController {
 
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM dd"
-        monthLabel.text = formatter.string(from: beginWeekDate) + " - " + formatter.string(from: endWeekDate)
-    
+        monthLabel.text = formatter.string(from: beginWeekDate).uppercased() + " - " + formatter.string(from: endWeekDate).uppercased()
+        
+        
 
     }
 
@@ -138,7 +166,7 @@ extension WorkoutScheduleViewController : UITableViewDelegate, UITableViewDataSo
         // Highlight selected day of the week. Default current date
         formatter.dateFormat = "MMM dd"
         if(formatter.string(from: todaysDate) == formatter.string(from: selectedDate)) {
-            cell.backgroundColor = UIColor(red: 0.498, green: 0.051, blue: 0.008, alpha: 1.0)
+            cell.backgroundColor = UIColor.lightText
         } else {
             cell.backgroundColor = UIColor.systemGray2
         }
@@ -155,9 +183,16 @@ extension WorkoutScheduleViewController : UITableViewDelegate, UITableViewDataSo
         //Client selected a day of the week to be viewed
         selectedDate = Calendar.current.date(byAdding: .day, value: indexPath.row - Calendar.current.component(.weekday, from: Date()) + 1, to: Date())!
         
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd"
+        currentDataViewed.text = formatter.string(from: selectedDate).uppercased()
+
+        
         weekCollectionView.reloadData()
     }
 
 }
+
+
 
 

@@ -29,7 +29,7 @@ class RecordViewController: UIViewController {
         
         dateView.backgroundColor = .white
         dateView.layer.cornerRadius = 10
-        dateView.layer.borderWidth = 10
+        dateView.layer.borderWidth = 8
         dateView.layer.borderColor = UIColor.black.cgColor
     }
 

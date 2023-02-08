@@ -33,7 +33,6 @@ class DBManager
         if sqlite3_open(filePath.path, &db) != SQLITE_OK
         {
             debugPrint("can't open database")
-            print("here")
             return nil
         }
         else
@@ -59,22 +58,23 @@ class DBManager
         }
         sqlite3_finalize(createTableStatement)
     }
-      
-      
-    func insert(id:Int, name:String, email:String) {
+    
+    func insert(name: String, email: String) {
         let users = read()
         for user in users {
-            if user.id == id {
+            if user.email == email {
+                print("User already Exists")
                 return
             }
         }
+        let highestId = users.map { $0.id }.max() ?? 0
         let insertStatementString = "INSERT INTO user (Id, name, email) VALUES (?, ?, ?);"
         var insertStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
-            sqlite3_bind_int(insertStatement, 1, Int32(id))
+            sqlite3_bind_int(insertStatement, 1, Int32(highestId + 1))
             sqlite3_bind_text(insertStatement, 2, (name as NSString).utf8String, -1, nil)
             sqlite3_bind_text(insertStatement, 3, (email as NSString).utf8String, -1, nil)
-              
+
             if sqlite3_step(insertStatement) == SQLITE_DONE {
                 print("Successfully inserted row.")
             } else {
@@ -99,17 +99,25 @@ class DBManager
                 let name = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
                 let email = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
                 let age = sqlite3_column_int(queryStatement, 3)
-                print(age)
                 let weight = sqlite3_column_double(queryStatement, 4)
-                print(weight)
 
                 let split =  sqlite3_column_text(queryStatement, 5)
-                var splitValue = ""
+                var splitValue = [String]()
+                    
+                    if let split = split {
+                        do {
+                            let splitData = Data(bytes: split, count: Int(strlen(split)))
+                            splitValue = try JSONDecoder().decode([String].self, from: splitData)
+                        } catch {
+                            print("Error: \(error)")
+                        }
+                    }
+                let splitString = splitValue.joined(separator: ",")
                 
-                users.append(User(id: Int(id), name: name, age: Int(age), email: email, weight: weight, split: splitValue))
+                users.append(User(id: Int(id), name: name, age: Int(age), email: email, weight: weight, split: splitString))
                 
                 print("Query Result:")
-                print("\(id) | \(name) | \(age) | \(email)")
+                print("\(id) | \(name) | \(age) | \(weight) | \(String(describing: split)) | \(email)")
             }
         } else {
             print("SELECT statement could not be prepared")
@@ -118,7 +126,7 @@ class DBManager
         return users
     }
     
-    func update(id: Int, age: Int? = nil, weight: Double? = nil, split: [String: String]? = nil) {
+    func update(id: Int, age: Int? = nil, weight: Double? = nil, split: [String]? = nil) {
         let updateStatementString = "UPDATE user SET age = ?, weight = ?, split = ? WHERE id = ?;"
         var updateStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
