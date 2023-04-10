@@ -1,3 +1,3 @@
-## Hello 👋🏽 
+# HUGE Fitness x Nutrition 💪🏽🍴
 
-This is an IOS application I began building to track my workout schedule, food plan, and lift progression.
+iOS mobile application I began creating to help myself and others track my workout schedule, food plan, and lift progression.
